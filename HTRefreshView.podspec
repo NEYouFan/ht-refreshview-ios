@@ -32,7 +32,8 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "7.0"
 
-  s.dependency 'ReactiveCocoa', '~> 2.1.8'
+  s.dependency   'ReactiveCocoa', '~> 2.1.8'
+  s.dependency   'HTCommonUtility', '~>0.0.2'
 
   s.source       = { :git => "https://github.com/NEYouFan/HTRefreshView-iOS.git", :tag => s.version.to_s }
 
