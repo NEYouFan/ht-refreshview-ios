@@ -16,14 +16,14 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "HTRefreshView"
-  s.version      = "0.0.1"
-  s.summary      = "A short description of HTRefreshView."
+  s.version      = "0.0.2"
+  s.summary      = "网易标准化控件库之 HTRefreshView."
 
   s.description  = <<-DESC
                    A longer description of HTRefreshView in Markdown format.
                    DESC
 
-  s.homepage     = "https://github.com/NEYouFan/HTRefreshView-iOS"
+  s.homepage     = "https://github.com/NEYouFan/ht-refreshview-ios"
 
 
   s.license      = "MIT"
@@ -35,7 +35,7 @@ Pod::Spec.new do |s|
   s.dependency   'ReactiveCocoa', '~> 2.1.8'
   s.dependency   'HTCommonUtility', '~>0.0.2'
 
-  s.source       = { :git => "https://github.com/NEYouFan/HTRefreshView-iOS.git", :tag => s.version.to_s }
+  s.source       = { :git => "https://github.com/NEYouFan/ht-refreshview-ios.git", :tag => s.version.to_s }
 
   s.source_files  = "HTRefreshView/*.{h,m}"
 
