@@ -71,8 +71,8 @@
         [self loadSubViews];
 
         // Check if the scrollView already had an MSPullToRefreshController.
-#warning scrollView只有一个refreshController并且这个refreshController维护了不止一个delegate; 每一个方向上有一个delegate.
-#warning ? 这里为什么要将refreshController存在scrollView那里？是因为ScrollView与RefreshController是一对一？我觉得这个持有关系比较难理解
+//#warning scrollView只有一个refreshController并且这个refreshController维护了不止一个delegate; 每一个方向上有一个delegate.
+//#warning ? 这里为什么要将refreshController存在scrollView那里？是因为ScrollView与RefreshController是一对一？我觉得这个持有关系比较难理解
         self.msRefreshController = [scrollView ht_getMSPullToRefreshController];
         if (!self.msRefreshController) {
             self.msRefreshController = [[MSPullToRefreshController alloc] initWithScrollView:scrollView
@@ -107,7 +107,7 @@
 
 #pragma mark - Public methods.
 
-#warning 用于程序自动刷新.
+//#warning 用于程序自动刷新.
 - (void)startRefresh:(BOOL)animated {
     [self.msRefreshController startRefreshingDirection:(int)self.refreshDirection
                                           delegate:self
@@ -173,7 +173,7 @@
       refreshableInsetForDirection:(MSRefreshDirection) direction {
     // If parameters are valid.
     if (![self checkController:controller direction:direction]) {
-#warning const变量或者宏定义说明一下这个值.
+//#warning const变量或者宏定义说明一下这个值.
         return -1.0;
     }
 
@@ -196,7 +196,7 @@
         }
      }
     
-#warning 加下说明
+//#warning 加下说明
     if (refreshableInset < 0.000001 || refreshableInset > -0.000001) {
         refreshableInset += 0.000001;
     }

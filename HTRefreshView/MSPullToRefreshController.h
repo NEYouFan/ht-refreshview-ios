@@ -127,14 +127,14 @@ typedef NS_ENUM(NSInteger, MSRefreshMode) {
 
  @brief The main Class of MSPullToRefresh
  */
-#warning 如果MSPullToRefreshController与UIScrollView不是一对一而是多对一的话，是否会好一点？仅个人看法.
+//#warning 如果MSPullToRefreshController与UIScrollView不是一对一而是多对一的话，是否会好一点？仅个人看法.
 @interface MSPullToRefreshController : NSObject
 
 /// The ScrollView to be observed.
 //TODO： 强引用，因为需要监听 ScrollView 的 contentOffset
-#warning ???? 引用关系是怎样的？从现在代码看，HTRefreshView持有MSController, MSController弱引用ScrollView, ScrollView有可能持有HTRefreshView; HTRefreshView是有UIScrollView的弱引用. 这里是weak可能是因为ScrollView有可能持有HTRefreshView作为子控件.
-#warning 核心关系: MSController监控UIScrollView的变化，然后通知到自己的delegate也就是HTRefreshView. 
-#warning HTRefreshView有两层作用， 1 作为MSController的Delegate，给予配置信息并接收回调; 2 作为展示的View（也可以添加到UIScrollView视图层级中）
+//#warning ???? 引用关系是怎样的？从现在代码看，HTRefreshView持有MSController, MSController弱引用ScrollView, ScrollView有可能持有HTRefreshView; HTRefreshView是有UIScrollView的弱引用. 这里是weak可能是因为ScrollView有可能持有HTRefreshView作为子控件.
+//#warning 核心关系: MSController监控UIScrollView的变化，然后通知到自己的delegate也就是HTRefreshView. 
+//#warning HTRefreshView有两层作用， 1 作为MSController的Delegate，给予配置信息并接收回调; 2 作为展示的View（也可以添加到UIScrollView视图层级中）
 @property (nonatomic, weak) UIScrollView *scrollView;
 
 /*!
@@ -157,7 +157,7 @@ typedef NS_ENUM(NSInteger, MSRefreshMode) {
  无需在 MSPullToRefreshController 中设置 contentInset。
  有两种触发刷新的模式，@see MSRefreshMode
  */
-#warning 尽量避免参数传递用数组
+//#warning 尽量避免参数传递用数组
 @property (nonatomic, strong) NSMutableArray *refreshMode;
 
 /*!
@@ -329,7 +329,7 @@ typedef NS_ENUM(NSInteger, MSRefreshMode) {
  @param direction  The direction whose refresh stage changed.
  */
 
-#warning 这个回调的意义在哪里？
+//#warning 这个回调的意义在哪里？
 - (void)pullToRefreshController:(MSPullToRefreshController *)controller
    didDisengageRefreshDirection:(MSRefreshDirection) direction;
 

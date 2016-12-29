@@ -46,7 +46,7 @@
  @param direction The direction to be checked whether should change the refresh stage.
  @param delegate  Delegate to recieve callbacks.
  */
-#warning 方法名
+//#warning 方法名
 - (void) _checkOffsetsForDirection:(MSRefreshDirection)direction
                           delegate:(id<MSPullToRefreshDelegate>)delegate;
 
@@ -103,7 +103,7 @@
         [self setDelegate:delegate withDirection:direction];
         // Set variables.
         self.scrollView = scrollView;
-#warning 使用@(NO)即可. refreshMode 数组同.
+//#warning 使用@(NO)即可. refreshMode 数组同.
 //        self.insetAnimationFinished = [NSMutableArray arrayWithObjects:@(NO), @(NO), @(NO), @(NO), nil];
         self.insetAnimationFinished = [NSMutableArray arrayWithObjects:
                                        [NSNumber numberWithBool:NO],
@@ -207,7 +207,7 @@
                                           canRefreshInDirection:direction];
 
             if (canRefresh)
-#warning 核心就是这个方法，这个方法检查offset并且通知到delegate也就是HTRefreshView.
+//#warning 核心就是这个方法，这个方法检查offset并且通知到delegate也就是HTRefreshView.
                 [self _checkOffsetsForDirection:direction delegate:delegate];
         }
     }
@@ -217,7 +217,7 @@
 
 #pragma mark - Public Methods
 
-#warning 只能由RefreshView的startRefresh触发？
+//#warning 只能由RefreshView的startRefresh触发？
 - (void)startRefreshingDirection:(MSRefreshDirection)direction
                         delegate:(id<MSPullToRefreshDelegate>)delegate {
     [self startRefreshingDirection:direction delegate:delegate animated:NO];
@@ -245,7 +245,7 @@
     _scrollView.contentSize.height : _scrollView.frame.size.height;
     CGSize adjustedContentSize = CGSizeMake(adjustedSizeWidth, adjustedSizeHeigth);
     
-#warning 模拟滑动.
+//#warning 模拟滑动.
     CGFloat originalContentOffsetX = 0.0;
     CGFloat originalContentOffsetY = 0.0;
     switch (direction) {
@@ -315,14 +315,14 @@
     [self finishRefreshingDirection:direction animated:NO];
 }
 
-#warning 这个方法太大，是否可以拆分 ?
+//#warning 这个方法太大，是否可以拆分 ?
 - (void)finishRefreshingDirection:(MSRefreshDirection)direction animated:(BOOL)animated {
     
     if ([_refreshMode[direction] integerValue] == MSDoNotTriggerRefresh) {
         return;
     }
     id<MSPullToRefreshDelegate> delegate = [self delegateWithDirection:direction];
-#warning 这里代码有错误 didEndRefreshDirection VS willEndRefreshDirection
+//#warning 这里代码有错误 didEndRefreshDirection VS willEndRefreshDirection
     if ([delegate respondsToSelector:@selector(pullToRefreshController:didEndRefreshDirection:)]) {
         [delegate pullToRefreshController:self willEndRefreshDirection:direction];
     }
@@ -336,8 +336,8 @@
     CGFloat adjustedSizeHeigth = (_scrollView.contentSize.height > _scrollView.frame.size.height)?
     _scrollView.contentSize.height : _scrollView.frame.size.height;
     
-#warning [_canFinish[direction] boolValue] 可以先取出来.
-#warning 下面要做的事情实际上是恢复原位.
+//#warning [_canFinish[direction] boolValue] 可以先取出来.
+//#warning 下面要做的事情实际上是恢复原位.
     switch (direction) {
         case MSRefreshDirectionTop:
             refreshingDirection = MSRefreshingDirectionTop;
@@ -401,7 +401,7 @@
             break;
     }
     
-#warning 下面没看明白....
+//#warning 下面没看明白....
     self.logicRefreshFinished[direction] = [NSNumber numberWithBool:YES];
     
     if (![_insetAnimationFinished[direction] boolValue] ||
@@ -415,7 +415,7 @@
     [_scrollView setContentOffset:CGPointMake(presentationLayer.bounds.origin.x,
                                               presentationLayer.bounds.origin.y) animated:NO];
     
-#warning 下面的代码可以封装成为一个方法.
+//#warning 下面的代码可以封装成为一个方法.
     if (animated) {
         @weakify(self)
         [UIView animateWithDuration:.25
@@ -455,7 +455,7 @@
 - (void)_checkOffsetsForDirection:(MSRefreshDirection)direction
                          delegate:(id<MSPullToRefreshDelegate>)delegate {
     // Check if canFinish should change on specified direction.
-#warning 这个方法太别扭了. 而且这个方法与上面的变量定义都无关，可以提前调用. 包括下面的refreshingDirection的判断...
+//#warning 这个方法太别扭了. 而且这个方法与上面的变量定义都无关，可以提前调用. 包括下面的refreshingDirection的判断...
     [self judgeCanFinish:direction];
     
     // If the specified direction is currently refreshing, do not need to caculate more.
@@ -474,7 +474,7 @@
     BOOL reachEdge = NO; // Whether the scrollView's content reach edges.
     CGFloat percent = 0.0;
     
-#warning 在这之前的    UIEdgeInsets contentInset = _scrollView.contentInset; 可以合成一句.
+//#warning 在这之前的    UIEdgeInsets contentInset = _scrollView.contentInset; 可以合成一句.
     // Calculate refresh informations.
     contentInset = [self calculateCanEngage:&canEngage reachEdges:&reachEdge
                                    percent:&percent direction:direction
@@ -491,7 +491,7 @@
     }
     
     // Notify content has reached the edges of scrollview.
-#warning reachEdge和前面的条件可以合并.
+//#warning reachEdge和前面的条件可以合并.
     if ([_refreshMode[direction] integerValue] == MSDoNotTriggerRefresh) {
         if (reachEdge &&
             [delegate respondsToSelector:@selector(pullToRefreshController:
@@ -501,8 +501,8 @@
         return;
     }
 
-#warning 建议self.refreshableDirections & refreshableDirection 弄成一个更清晰的表达式描述, 原因：多处使用，且表意不直接.
-#warning if-else层级太多了一点，尽量改进.
+//#warning 建议self.refreshableDirections & refreshableDirection 弄成一个更清晰的表达式描述, 原因：多处使用，且表意不直接.
+//#warning if-else层级太多了一点，尽量改进.
     // Only go in here if the refreshmode for the specified direction is MSDraggingTriggerRefresh.
     if (canEngage) {
         // only go in here if user pulled past the inflection offset
@@ -602,8 +602,8 @@
                 _canFinish[direction] = [NSNumber numberWithBool:NO];
             } else if (modelLayer.bounds.origin.y > -contentInset.top + 0.001) {
                 _canFinish[direction] = [NSNumber numberWithBool:YES];
-#warning 这个方法里面做的事情太多了，finishRefreshingDirection建议不要在这个方法里调用.
-#warning 建议更改方式: 1. finishRefreshingDirection是否调用的判断放到外面去; 2. 这个方法直接返回一个BOOL值然后拿到这个BOOL值后再去设置指定方向的_canFinish. 例如这个方法变成 -(BOOL)canFinish:(MSRefreshDirection)direction;
+//#warning 这个方法里面做的事情太多了，finishRefreshingDirection建议不要在这个方法里调用.
+//#warning 建议更改方式: 1. finishRefreshingDirection是否调用的判断放到外面去; 2. 这个方法直接返回一个BOOL值然后拿到这个BOOL值后再去设置指定方向的_canFinish. 例如这个方法变成 -(BOOL)canFinish:(MSRefreshDirection)direction;
                 if (insetAnimationFinished && logicRefreshFinished) {
                     [self finishRefreshingDirection:direction animated:YES];
                 }

@@ -174,9 +174,9 @@ typedef void (^refreshHandler)(HTRefreshView *view);
  
  @superclass SuperClass:UIView
  */
-#warning HTRefreshView似乎并没有设置为scrollView的Delegate.
-#warning HTRefreshView为什么没有设置成为MSPullToRefreshDelegate
-#warning HTRefreshViewDelegate -> HTRefreshViewProtocol
+//#warning HTRefreshView似乎并没有设置为scrollView的Delegate.
+//#warning HTRefreshView为什么没有设置成为MSPullToRefreshDelegate
+//#warning HTRefreshViewDelegate -> HTRefreshViewProtocol
 @interface HTRefreshView : UIView <UIScrollViewDelegate, HTRefreshViewDelegate>
 
 /*!
@@ -186,7 +186,7 @@ typedef void (^refreshHandler)(HTRefreshView *view);
            strongly reference RefreshView. As a consequence, we use weak referenct to scrollView
            here.
  */
-#warning 不可更改的建议设置为readonly. 去掉基类后修正.
+//#warning 不可更改的建议设置为readonly. 去掉基类后修正.
 @property (nonatomic, weak) UIScrollView *scrollView;
 
 /*!
@@ -209,7 +209,7 @@ typedef void (^refreshHandler)(HTRefreshView *view);
 /*!
  MSPullToRefreshController Object
  */
-#warning 不太分得清哪些是外部需要关心的接口. msRefreshController似乎外部和自己重写RefreshView都不需要关心. 去掉基类后修正.
+//#warning 不太分得清哪些是外部需要关心的接口. msRefreshController似乎外部和自己重写RefreshView都不需要关心. 去掉基类后修正.
 @property (nonatomic, strong) MSPullToRefreshController *msRefreshController;
 
 /*!
@@ -292,7 +292,7 @@ typedef void (^refreshHandler)(HTRefreshView *view);
  
  @param animated 是否采用动画开始刷新
  */
-#warning 使用场景？程序自动刷新，一般这类交互比较少.
+//#warning 使用场景？程序自动刷新，一般这类交互比较少.
 - (void)startRefresh:(BOOL)animated;
 
 /*!
