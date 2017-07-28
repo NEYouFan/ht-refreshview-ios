@@ -14,7 +14,6 @@
 #import "HTRefreshView.h"
 #import "HTRefreshViewLogger.h"
 #import "RACEXTScope.h"
-#import "NSObject+HTSafeObserver.h"
 
 @interface MSPullToRefreshController ()
 
