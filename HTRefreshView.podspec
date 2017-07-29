@@ -1,3 +1,4 @@
+# coding: utf-8
 #
 #  Be sure to run `pod spec lint HTRefreshView.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
@@ -28,12 +29,12 @@ Pod::Spec.new do |s|
 
   s.license      = "MIT"
 
-  s.author             = { "netease" => "cxq901123@163.com" }
+  s.author       = { "netease" => "cxq901123@163.com" }
 
   s.platform     = :ios, "7.0"
 
   s.dependency   'ReactiveCocoa', '~> 2.1.8'
-  s.dependency   'HTCommonUtility', '~>0.0.2'
+  s.dependency   'HTCommonUtility', '~>0.0.4'
 
   s.source       = { :git => "https://github.com/NEYouFan/ht-refreshview-ios.git", :tag => s.version.to_s }
 
